@@ -4,666 +4,366 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#100817">
-<title>Only For You ❤️</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,600;1,700&display=swap" rel="stylesheet">
-
+<title>For My Happiness ❤️</title>
 <style>
-:root{
-  --pink:#ff8dbb;
-  --light:#ffd3e5;
-  --purple:#9b70d6;
-  --dark:#100817;
-  --glass:rgba(255,255,255,.075);
-}
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
+*{box-sizing:border-box}
 body{
-  min-height:100vh;
-  background:var(--dark);
-  color:white;
-  font-family:'Hind Siliguri',sans-serif;
-  overflow-x:hidden;
+ margin:0;min-height:100vh;color:white;text-align:center;
+ font-family:system-ui,Arial,sans-serif;
+ background:radial-gradient(ellipse at top,#a52b65 0%,#50102f 48%,#190819 100%);
+ overflow-x:hidden;
 }
 body:before{
-  content:"";
-  position:fixed;
-  inset:0;
-  z-index:-3;
-  background:
-  radial-gradient(ellipse at 15% 15%,#77325b70,transparent 45%),
-  radial-gradient(ellipse at 85% 80%,#633b9b65,transparent 45%),
-  linear-gradient(145deg,#100817,#1c102a,#0a0712);
+ content:"";position:fixed;inset:0;pointer-events:none;
+ background:radial-gradient(circle at 20% 20%,#ff8ab433,transparent 30%),
+ radial-gradient(circle at 80% 80%,#ff4f9233,transparent 35%);
 }
-#stars,#particles{
-  position:fixed;inset:0;
-  overflow:hidden;pointer-events:none;
-  z-index:-1;
-}
-.star{
-  position:absolute;
-  background:white;
-  border-radius:50%;
-  animation:twinkle 3s infinite alternate;
-}
-@keyframes twinkle{
-  from{opacity:.15;transform:scale(.6)}
-  to{opacity:1;transform:scale(1.4)}
-}
+#particles{position:fixed;inset:0;pointer-events:none;overflow:hidden}
 .particle{
-  position:absolute;
-  bottom:-50px;
-  animation:rise linear forwards;
-  opacity:.75;
+ position:absolute;bottom:-40px;animation:floatUp linear infinite;
+ opacity:.7;filter:drop-shadow(0 0 8px #ff8cbd);
 }
-@keyframes rise{
-  to{transform:translateY(-115vh) rotate(360deg);opacity:0}
+@keyframes floatUp{
+ to{transform:translateY(-115vh) rotate(360deg);opacity:0}
 }
 .screen{
-  display:none;
-  min-height:100vh;
-  padding:25px 17px;
-  align-items:center;
-  justify-content:center;
-  flex-direction:column;
+ min-height:100vh;display:none;align-items:center;
+ justify-content:center;padding:22px;position:relative;z-index:1;
 }
-.screen.active{display:flex;animation:appear .7s ease}
+.screen.active{display:flex;animation:appear .65s ease}
 @keyframes appear{
-  from{opacity:0;transform:translateY(18px)}
-  to{opacity:1;transform:translateY(0)}
+ from{opacity:0;transform:translateY(20px) scale(.97)}
+ to{opacity:1;transform:translateY(0) scale(1)}
 }
-.wrap{width:100%;max-width:490px;margin:auto}
 .card{
-  width:100%;
-  padding:30px 23px;
-  border-radius:27px;
-  background:var(--glass);
-  border:1px solid #ffffff20;
-  backdrop-filter:blur(20px);
-  box-shadow:0 20px 70px #0005,0 0 30px #ff82b21a;
-  text-align:center;
+ width:min(100%,440px);padding:28px 20px;border-radius:28px;
+ background:linear-gradient(145deg,#ffffff20,#ffffff09);
+ border:1px solid #ffffff42;
+ box-shadow:0 15px 55px #08000b66,inset 0 1px #ffffff25;
+ backdrop-filter:blur(16px);
 }
-.top-label{
-  color:#ffb5d2;
-  font-size:13px;
-  letter-spacing:3px;
-  margin-bottom:14px;
-}
-h1{
-  font-size:clamp(29px,8vw,43px);
-  line-height:1.35;
-  color:#ffd1e4;
-  text-shadow:0 0 20px #ff7db255;
-  margin-bottom:13px;
-}
-h2{font-size:26px;color:#ffc3dc;margin-bottom:12px}
-p{
-  font-size:16px;
-  line-height:1.9;
-  color:#f1dfed;
-}
-.glow{
-  color:#ffacd0;
-  text-shadow:0 0 15px #ff69aa;
-}
-.big-heart{
-  font-size:76px;
-  display:block;
-  margin:15px 0;
-  animation:beat 1.4s infinite;
-}
-@keyframes beat{
-  0%,100%{transform:scale(1)}
-  50%{transform:scale(1.17)}
+h1{font-size:27px;color:#ffd7e7;margin:10px 0}
+h2{font-size:23px;color:#ffe0ed}
+p{line-height:1.7;color:#ffe8f1}
+.hero{font-size:75px;animation:heartbeat 1.3s infinite}
+@keyframes heartbeat{
+ 0%,100%{transform:scale(1)}
+ 15%{transform:scale(1.13)}
+ 30%{transform:scale(1)}
+ 45%{transform:scale(1.1)}
 }
 button{
-  font-family:inherit;
-  cursor:pointer;
-  border:none;
-  transition:.25s;
+ border:0;padding:13px 23px;margin:7px;border-radius:30px;
+ background:linear-gradient(120deg,#ffd0e1,#ff82b1);
+ color:#74153e;font-size:15px;font-weight:800;
+ cursor:pointer;box-shadow:0 5px 20px #ff5b9c44;
+ transition:.2s;
 }
-button:active{transform:scale(.96)}
-.primary{
-  display:inline-block;
-  padding:13px 26px;
-  margin-top:20px;
-  border-radius:50px;
-  color:#481c36;
-  font-size:16px;
-  font-weight:700;
-  background:linear-gradient(120deg,#ffb2d2,#f36da8);
-  box-shadow:0 7px 28px #ff65a744;
-}
-.primary:hover{transform:translateY(-3px);box-shadow:0 10px 35px #ff65a777}
-.secondary{
-  background:#ffffff10;
-  color:#ffe1ee;
-  border:1px solid #ffffff35;
-  padding:12px 22px;
-  border-radius:50px;
-  margin-top:12px;
-}
+button:active{transform:scale(.94)}
+button:hover{filter:brightness(1.08);transform:translateY(-2px)}
 input{
-  display:block;
-  width:100%;
-  padding:15px;
-  margin-top:18px;
-  border:1px solid #ffacd055;
-  border-radius:14px;
-  outline:none;
-  background:#ffffff0d;
-  color:white;
-  font-family:inherit;
-  font-size:17px;
-  text-align:center;
+ padding:14px;width:85%;border:1px solid #ffffff66;
+ border-radius:25px;text-align:center;font-size:16px;
+ background:#ffffffed;color:#651238;outline:none;
 }
-input::placeholder{color:#bba7bc}
 .progress{
-  width:100%;
-  height:6px;
-  border-radius:20px;
-  background:#ffffff18;
-  margin-bottom:25px;
-  overflow:hidden;
+ height:9px;background:#ffffff25;border-radius:20px;
+ overflow:hidden;margin:18px 0;
 }
-.fill{
-  height:100%;
-  width:0;
-  background:linear-gradient(90deg,#ff72a9,#c69aff);
-  transition:.5s;
+#bar{
+ height:100%;width:0;background:linear-gradient(90deg,#ff8cbd,#ffe0eb);
+ border-radius:20px;transition:.5s;
 }
-.question{
-  margin:20px 0;
-  padding:16px;
-  background:#ffffff0a;
-  border:1px solid #ffffff15;
-  border-radius:16px;
-  color:#ffe2ef;
-  font-size:17px;
+.stage{font-size:13px;color:#ffc5dc}
+.options{
+ display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:20px 0;
 }
-.option{
-  display:block;
-  width:100%;
-  margin-top:11px;
-  padding:14px;
-  border-radius:13px;
-  background:#ffffff0c;
-  border:1px solid #ffffff20;
-  color:white;
-  font-size:16px;
+.options button{margin:0;min-height:55px}
+.heart{
+ display:inline-grid;place-items:center;font-size:35px;
+ cursor:pointer;transition:.2s;user-select:none;
+ animation:heartbeat 1.5s infinite;
 }
-.option:hover{background:#ff8dbb25;border-color:#ff9fc8}
-.feedback{
-  color:#ffb4d2;
-  min-height:35px;
-  margin-top:15px;
-  font-size:16px;
-}
-.music-control{
-  position:fixed;
-  right:15px;
-  top:15px;
-  z-index:10;
-}
-.music-control button{
-  background:#ffffff16;
-  border:1px solid #ffffff35;
-  border-radius:50px;
-  color:white;
-  padding:10px 14px;
-  backdrop-filter:blur(10px);
-}
-.letter{
-  margin-top:20px;
-  padding:21px;
-  text-align:left;
-  border-radius:18px;
-  background:linear-gradient(145deg,#ffffff0c,#ff8dbb0d);
-  border:1px solid #ffb5d52b;
-}
-.letter p{margin-bottom:14px}
-.letter h2{text-align:center}
-.letter .sign{text-align:right;color:#ffbad8;font-size:20px}
-.heart-grid{
-  display:grid;
-  grid-template-columns:repeat(5,1fr);
-  gap:9px;
-  margin:22px 0;
-}
+.heart:active{transform:scale(.7)}
 .heart-box{
-  padding:13px 3px;
-  font-size:27px;
-  border-radius:13px;
-  color:white;
-  background:#ffffff10;
-  border:1px solid #ffffff18;
+ display:flex;justify-content:center;flex-wrap:wrap;
+ gap:16px;padding:20px 5px;
 }
-.heart-box.done{opacity:.3;pointer-events:none}
+.task-emoji{font-size:62px;margin:12px}
+.message{
+ padding:17px;border-radius:20px;background:#ffffff17;
+ border:1px solid #ffffff35;margin:15px 0;
+}
+#feedback{min-height:27px;color:#ffe1a9}
 .hidden{display:none!important}
-.final-buttons{
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-  justify-content:center;
+.match{
+ display:grid;grid-template-columns:repeat(3,1fr);gap:9px;
+ max-width:280px;margin:20px auto;
 }
-footer{
-  color:#bda9bd;
-  font-size:12px;
-  text-align:center;
-  padding:20px;
+.match button{
+ margin:0;padding:10px;font-size:29px;min-height:72px;
+ background:#ffffff20;color:white;border:1px solid #ffffff44;
 }
-@media(max-width:370px){
-  .card{padding:24px 16px}
-  h2{font-size:23px}
-  .heart-box{font-size:23px;padding:12px 2px}
-}
+.match button.done{background:#ff8bb8;color:#6e1539}
+.bigfinal{font-size:85px;animation:heartbeat 1s infinite}
 </style>
 </head>
-
 <body>
-
-<div id="stars"></div>
 <div id="particles"></div>
 
-<!-- MUSIC -->
-<audio id="music" loop preload="none">
-  <source src="music.mp3" type="audio/mpeg">
-</audio>
-
-<div class="music-control">
-  <button onclick="toggleMusic()" id="musicBtn">🎵 Music OFF</button>
-</div>
-
-<!-- SCREEN 1: PASSWORD -->
-<section class="screen active" id="password">
-<div class="wrap">
-<div class="card">
-  <div class="top-label">A LITTLE SECRET FOR YOU</div>
-  <span class="big-heart">🔐</span>
-  <h1>Only For You</h1>
-  <p>এই ছোট্ট surprise শুধু তোমার জন্য।<br>প্রথমে secret password দিতে হবে। 💗</p>
-  <input type="password" id="pass" placeholder="Enter Secret Password">
-  <button class="primary" onclick="unlock()">Unlock My Heart ❤️</button>
-  <div class="feedback" id="passMsg"></div>
-  <p style="font-size:12px;color:#bba8bd">A secret world made with love ✨</p>
-</div>
-</div>
+<!-- PASSWORD -->
+<section class="screen active" id="login">
+ <div class="card">
+  <div class="hero">💗</div>
+  <h1>Hello My Happiness!</h1>
+  <p>তোমার জন্য আমার ছোট্ট একটা Surprise আছে। 🥺</p>
+  <p>🔐 Password হবে Saheb-এর Mobile Number ❤️” ❤️</p>
+  <input id="password" type="password" placeholder="Secret Password">
+  <br><button onclick="unlock()">Open My Heart 💌</button>
+  <p id="loginError"></p>
+ </div>
 </section>
 
-<!-- SCREEN 2: WELCOME -->
-<section class="screen" id="welcome">
-<div class="wrap">
-<div class="card">
-  <div class="top-label">WELCOME TO MY LITTLE WORLD</div>
-  <span class="big-heart">💗</span>
-  <h1>Hey, My Love!</h1>
-  <p>
-    জানি তুমি আমার ওপর অভিমান করে আছো।<br>
-    তোমার মন ভালো করার জন্য<br>
-    একটা ছোট্ট surprise বানিয়েছি।
-    <br><br>
-    এখানে কয়েকটা ছোট্ট task আছে।<br>
-    সবগুলো complete করলে শেষ surprise পাবে। 🥹
-  </p>
-  <button class="primary" onclick="startGame()">Let's Begin 💌</button>
-</div>
-</div>
+<!-- INTRO -->
+<section class="screen" id="intro">
+ <div class="card">
+  <div class="hero">🫂</div>
+  <h1>Welcome Happiness!</h1>
+  <p>তোমার জন্য ৬টা ছোট্ট Task রেখেছি।</p>
+  <p>একটার পর একটা শেষ করলেই পাবে তোমার Surprise! 💞</p>
+  <div class="message">Ready, আমার Happiness? 🌷</div>
+  <button onclick="go(1)">Let's Start ❤️</button>
+ </div>
 </section>
 
-<!-- PUZZLE 1 -->
-<section class="screen" id="puzzle1">
-<div class="wrap">
-<div class="card">
-  <div class="top-label">LEVEL 01 · THE RIDDLE</div>
-  <div class="progress"><div class="fill" id="progress1"></div></div>
-  <h2>একটা ধাঁধা আছে! 🥺</h2>
-  <div class="question">
-    চোখে দেখা যায় না,<br>
-    কিন্তু মন দিয়ে অনুভব করা যায়।<br>
-    দূরে থেকেও দুজনকে কাছে রাখে।<br><br>
-    সেটা কী?
+<!-- TASK 1 -->
+<section class="screen" id="task1">
+ <div class="card">
+  <div class="stage">TASK 1 / 6</div>
+  <div class="progress"><div id="bar"></div></div>
+  <div class="task-emoji">💗</div>
+  <h2>Catch My Love!</h2>
+  <p>নিচের ৫টা Heart-এ Tap করো। সবগুলো তোমার জন্য! 🥰</p>
+  <div class="heart-box" id="hearts"></div>
+  <p id="count">0 / 5 collected</p>
+  <button id="task1next" class="hidden" onclick="go(2)">Next Task 💕</button>
+ </div>
+</section>
+
+<!-- TASK 2 -->
+<section class="screen" id="task2">
+ <div class="card">
+  <div class="stage">TASK 2 / 6</div>
+  <div class="progress"><div id="bar2"></div></div>
+  <div class="task-emoji">🥺</div>
+  <h2>একটা সহজ প্রশ্ন!</h2>
+  <p>আমার Happiness কে?</p>
+  <div class="options">
+   <button onclick="answer(2,false)">চাঁদ 🌙</button>
+   <button onclick="answer(2,true)">তুমি ❤️</button>
+   <button onclick="answer(2,false)">তারকা ⭐</button>
+   <button onclick="answer(2,false)">পুতুল 🧸</button>
   </div>
-  <button class="option" onclick="puzzle1('money')">💰 টাকা</button>
-  <button class="option" onclick="puzzle1('love')">❤️ ভালোবাসা</button>
-  <button class="option" onclick="puzzle1('sleep')">😴 ঘুম</button>
-  <div class="feedback" id="feedback1"></div>
-</div>
-</div>
+  <p id="feedback2"></p>
+  <button id="next2" class="hidden" onclick="go(3)">Next Task 💗</button>
+ </div>
 </section>
 
-<!-- PUZZLE 2 -->
-<section class="screen" id="puzzle2">
-<div class="wrap">
-<div class="card">
-  <div class="top-label">LEVEL 02 · SECRET WORD</div>
-  <div class="progress"><div class="fill" id="progress2"></div></div>
-  <h2>Secret Message 💌</h2>
-  <p>অক্ষরগুলো এলোমেলো হয়ে গেছে।<br>সঠিক শব্দটা খুঁজে বের করো!</p>
-  <div class="question glow" style="font-size:35px;letter-spacing:9px">
-    Y R R O S
+<!-- TASK 3 -->
+<section class="screen" id="task3">
+ <div class="card">
+  <div class="stage">TASK 3 / 6</div>
+  <div class="progress"><div id="bar3"></div></div>
+  <div class="task-emoji">🌸</div>
+  <h2>Little Memory Test</h2>
+  <p>একটু ভালো করে দেখো, তারপর বলো—এখানে কয়টা Heart আছে?</p>
+  <div class="message" style="font-size:35px">❤️ 💗 ❤️</div>
+  <div class="options">
+   <button onclick="answer(3,false)">২টা</button>
+   <button onclick="answer(3,true)">৩টা</button>
+   <button onclick="answer(3,false)">৪টা</button>
+   <button onclick="answer(3,false)">৫টা</button>
   </div>
-  <input id="secretWord" placeholder="Type your answer">
-  <button class="primary" onclick="puzzle2()">Check Answer 🔓</button>
-  <div class="feedback" id="feedback2"></div>
-</div>
-</div>
+  <p id="feedback3"></p>
+  <button id="next3" class="hidden" onclick="go(4)">Next Task 💗</button>
+ </div>
 </section>
 
-<!-- PUZZLE 3 -->
-<section class="screen" id="puzzle3">
-<div class="wrap">
-<div class="card">
-  <div class="top-label">LEVEL 03 · COLLECT LOVE</div>
-  <div class="progress"><div class="fill" id="progress3"></div></div>
-  <h2>Collect 10 Hearts ❤️</h2>
-  <p>সবগুলো heart-এ touch করো।<br>প্রতিটা heart তোমার জন্য!</p>
-  <div class="question glow" id="count">0 / 10 ❤️</div>
-  <div class="heart-grid" id="heartGrid"></div>
-  <div class="feedback" id="feedback3"></div>
-</div>
-</div>
+<!-- TASK 4 -->
+<section class="screen" id="task4">
+ <div class="card">
+  <div class="stage">TASK 4 / 6</div>
+  <div class="progress"><div id="bar4"></div></div>
+  <div class="task-emoji">🧩</div>
+  <h2>Heart Matching!</h2>
+  <p>একই রকম ৩ জোড়া Emoji খুঁজে বের করো।</p>
+  <div class="match" id="match"></div>
+  <p id="matchStatus">Matched: 0 / 3</p>
+  <button id="next4" class="hidden" onclick="go(5)">Next Task 💕</button>
+ </div>
 </section>
 
-<!-- FINAL SCREEN -->
+<!-- TASK 5 -->
+<section class="screen" id="task5">
+ <div class="card">
+  <div class="stage">TASK 5 / 6</div>
+  <div class="progress"><div id="bar5"></div></div>
+  <div class="task-emoji">💌</div>
+  <h2>একটা কথা বলবে?</h2>
+  <p>আমার সঙ্গে সারাজীবন এভাবেই হাসবে তো?</p>
+  <button onclick="answer(5,true)">হ্যাঁ, সবসময়! ❤️</button>
+  <button onclick="answer(5,true)">অবশ্যই! 🥺</button>
+  <p id="feedback5"></p>
+  <button id="next5" class="hidden" onclick="go(6)">Last Task 🎁</button>
+ </div>
+</section>
+
+<!-- TASK 6 -->
+<section class="screen" id="task6">
+ <div class="card">
+  <div class="stage">TASK 6 / 6</div>
+  <div class="progress"><div id="bar6"></div></div>
+  <div class="task-emoji">🫶</div>
+  <h2>শেষ ছোট্ট কাজ!</h2>
+  <p>আমার জন্য একটা Heart পাঠাও।</p>
+  <button style="font-size:45px" onclick="finish()">❤️</button>
+  <p>Heart-এ Tap করলেই Surprise খুলবে!</p>
+ </div>
+</section>
+
+<!-- FINAL -->
 <section class="screen" id="final">
-<div class="wrap">
-<div class="card">
-  <div class="top-label">YOU UNLOCKED MY HEART</div>
-  <span class="big-heart">💖</span>
-  <h1>One Last Surprise!</h1>
-  <p>
-    সব task complete করেছো!<br>
-    এবার আমার মনের কথাগুলো শোনো।
-  </p>
-
-  <button class="primary" id="openLetter" onclick="openLetter()">
-    Open Your Love Letter 💌
-  </button>
-
-  <div class="letter hidden" id="letter">
-    <h2>প্রিয় ভালোবাসা ❤️</h2>
-
-    <p>
-      জানি তুমি আমার ওপর অভিমান করে আছো।
-      হয়তো আমার কোনো কথা বা কাজ তোমাকে কষ্ট দিয়েছে।
-      আর তার জন্য আমি সত্যিই দুঃখিত।
-    </p>
-
-    <p>
-      আমি হয়তো সবসময় ঠিক হতে পারি না।
-      কখনও কখনও তোমার মনের কথা বুঝতেও ভুল করি।
-      কিন্তু বিশ্বাস করো, তোমার অনুভূতিগুলো আমার কাছে অনেক গুরুত্বপূর্ণ।
-    </p>
-
-    <p>
-      আমি চাই না শুধু একটা Sorry বলে সব ঠিক হয়ে যাক।
-      আমি চাই তোমার কথা শুনতে, তোমাকে বুঝতে
-      এবং আমার ভুলগুলো শুধরে নিতে।
-    </p>
-
-    <p>
-      তুমি রাগ করো, অভিমান করো, সময় নাও।
-      তোমার অনুভূতিকে আমি সম্মান করি।
-      শুধু যখন মন চাইবে, আমার সঙ্গে একটু কথা বলো।
-    </p>
-
-    <p>
-      তোমার হাসিটা আমার খুব প্রিয়।
-      তোমার মুখে হাসি থাকলে আমারও মন ভালো হয়ে যায়।
-    </p>
-
-    <p style="text-align:center;color:#ffb4d4;font-size:21px">
-      I AM REALLY SORRY 🥺<br>
-      I LOVE YOU SO MUCH ❤️
-    </p>
-
-    <div class="sign">— তোমারই একজন 💗</div>
+ <div class="card">
+  <div class="bigfinal">❤️</div>
+  <h1>My Happiness!</h1>
+  <p>তুমি সবগুলো Task শেষ করে ফেলেছো! 🥹</p>
+  <div class="message" style="font-size:21px;font-weight:bold;color:#ffe0ed">
+   আর অভিমান করো না...<br>
+   এবার আমার বুকে এসো 🥺❤️
   </div>
-
-  <div id="forgiveArea" class="hidden">
-    <h2 style="margin-top:25px">Will You Forgive Me? 🥹</h2>
-    <p>একটা ছোট্ট উত্তর দেবে?</p>
-
-    <div class="final-buttons">
-      <button class="primary" onclick="forgive()">Yes, I Forgive You ❤️</button>
-      <button class="secondary" onclick="notYet()">Not Yet 🙈</button>
-    </div>
-    <div class="feedback" id="finalFeedback"></div>
-  </div>
-
-</div>
-</div>
+  <p>তুমি আমার সবচেয়ে সুন্দর অনুভূতি।</p>
+  <div style="font-size:32px">🫂😘💗</div>
+  <button onclick="celebrate()">One More Hug! 🫂</button>
+  <p id="hug"></p>
+ </div>
 </section>
-
-<footer>Made with ❤️ just for you</footer>
 
 <script>
-
-// ==================================
-// CUSTOM SETTINGS
-// ==================================
-
-const SECRET_PASSWORD = "LOVE123";
-
-// ==================================
-// STAR BACKGROUND
-// ==================================
-
-const stars=document.getElementById("stars");
-
-for(let i=0;i<110;i++){
-  const s=document.createElement("div");
-  s.className="star";
-  s.style.left=Math.random()*100+"%";
-  s.style.top=Math.random()*100+"%";
-  s.style.width=(Math.random()*3+1)+"px";
-  s.style.height=s.style.width;
-  s.style.animationDelay=Math.random()*3+"s";
-  stars.appendChild(s);
+function show(id){
+ document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));
+ document.getElementById(id).classList.add("active");
 }
-
-// ==================================
-// FLOATING HEARTS
-// ==================================
-
-function floatingHeart(){
-  const h=document.createElement("div");
-  h.className="particle";
-  h.innerHTML=["💗","💕","💖","🌸","✨"][Math.floor(Math.random()*5)];
-  h.style.left=Math.random()*100+"%";
-  h.style.fontSize=(Math.random()*20+15)+"px";
-  h.style.animationDuration=(Math.random()*5+5)+"s";
-
-  document.getElementById("particles").appendChild(h);
-
-  setTimeout(()=>h.remove(),11000);
-}
-
-setInterval(floatingHeart,650);
-
-// ==================================
-// MUSIC CONTROL
-// ==================================
-
-const music=document.getElementById("music");
-let musicOn=false;
-
-async function toggleMusic(){
-  if(!musicOn){
-    try{
-      await music.play();
-      musicOn=true;
-      document.getElementById("musicBtn").innerHTML="🎵 Music ON";
-    }catch(e){
-      alert("music.mp3 ফাইলটি GitHub-এ upload করো।");
-    }
-  }else{
-    music.pause();
-    musicOn=false;
-    document.getElementById("musicBtn").innerHTML="🎵 Music OFF";
-  }
-}
-
-// ==================================
-// SCREEN CHANGE
-// ==================================
-
-function showScreen(id){
-  document.querySelectorAll(".screen").forEach(s=>{
-    s.classList.remove("active");
-  });
-
-  document.getElementById(id).classList.add("active");
-
-  window.scrollTo({top:0,behavior:"smooth"});
-}
-
-// ==================================
-// PASSWORD
-// ==================================
-
 function unlock(){
-  const input=document.getElementById("pass").value;
-
-  if(input===SECRET_PASSWORD){
-    document.getElementById("passMsg").innerHTML="Password Correct! 💗";
-
-    showScreen("welcome");
-
-    // Music may require another tap in browser
-    if(!musicOn){
-      music.play().then(()=>{
-        musicOn=true;
-        document.getElementById("musicBtn").innerHTML="🎵 Music ON";
-      }).catch(()=>{});
-    }
-  }else{
-    document.getElementById("passMsg").innerHTML="Oops! ভুল password 🥺";
-  }
+ if(document.getElementById("password").value==="8768630077"){
+  show("intro");
+ }else{
+  document.getElementById("loginError").textContent="Wrong password, Happiness 🥺";
+ }
+}
+function go(n){
+ show("task"+n);
+ if(n===1)makeHearts();
+ if(n===4)makeMatch();
+}
+function answer(task,correct){
+ const feedback=document.getElementById("feedback"+task);
+ if(task===5){
+  feedback.textContent="Yayyy! I love you, Happiness! ❤️";
+  document.getElementById("next5").classList.remove("hidden");
+  return;
+ }
+ if(correct){
+  feedback.textContent="একদম ঠিক! তুমি খুব ভালো! 😘";
+  document.getElementById("next"+task).classList.remove("hidden");
+  document.getElementById("bar"+task).style.width="100%";
+ }else{
+  feedback.textContent="আবার চেষ্টা করো, Happiness! 🥺";
+ }
 }
 
-document.getElementById("pass").addEventListener("keydown",e=>{
-  if(e.key==="Enter")unlock();
-});
-
-// ==================================
-// START
-// ==================================
-
-function startGame(){
-  showScreen("puzzle1");
-}
-
-// ==================================
-// PUZZLE 1
-// ==================================
-
-function puzzle1(answer){
-  const msg=document.getElementById("feedback1");
-
-  if(answer==="love"){
-    msg.innerHTML="একদম ঠিক! ভালোবাসা ❤️";
-    document.getElementById("progress1").style.width="100%";
-
-    setTimeout(()=>showScreen("puzzle2"),1300);
-  }else{
-    msg.innerHTML="আবার চেষ্টা করো, একটু ভাবো! 😊";
-  }
-}
-
-// ==================================
-// PUZZLE 2
-// ==================================
-
-function puzzle2(){
-  const answer=document.getElementById("secretWord").value.trim().toUpperCase();
-
-  if(answer==="SORRY"){
-    document.getElementById("feedback2").innerHTML="সঠিক উত্তর! 🥹❤️";
-    document.getElementById("progress2").style.width="100%";
-
-    setTimeout(()=>showScreen("puzzle3"),1300);
-  }else{
-    document.getElementById("feedback2").innerHTML="ভুল হয়েছে! Hint: S দিয়ে শুরু হয় ❤️";
-  }
-}
-
-document.getElementById("secretWord").addEventListener("keydown",e=>{
-  if(e.key==="Enter")puzzle2();
-});
-
-// ==================================
-// PUZZLE 3
-// ==================================
-
-const grid=document.getElementById("heartGrid");
+// Task 1: collect five hearts
 let collected=0;
-
-for(let i=0;i<10;i++){
-  const b=document.createElement("button");
-
-  b.className="heart-box";
-  b.innerHTML="💗";
-
-  b.onclick=()=>{
-    if(b.classList.contains("done"))return;
-
-    b.classList.add("done");
-    b.innerHTML="✨";
-
-    collected++;
-
-    document.getElementById("count").innerHTML=collected+" / 10 ❤️";
-
-    document.getElementById("progress3").style.width=(collected*10)+"%";
-
-    if(collected===10){
-      document.getElementById("feedback3").innerHTML="সব heart তোমার! ❤️";
-      setTimeout(()=>showScreen("final"),1500);
-    }
+function makeHearts(){
+ collected=0;
+ const box=document.getElementById("hearts");
+ box.innerHTML="";
+ document.getElementById("count").textContent="0 / 5 collected";
+ document.getElementById("task1next").classList.add("hidden");
+ for(let i=0;i<5;i++){
+  const h=document.createElement("span");
+  h.className="heart";h.textContent="💗";
+  h.onclick=()=>{
+   if(h.dataset.hit)return;
+   h.dataset.hit="yes";h.style.opacity=".25";
+   h.style.transform="scale(1.5)";
+   collected++;
+   document.getElementById("count").textContent=collected+" / 5 collected";
+   document.getElementById("bar").style.width=(collected*20)+"%";
+   if(collected===5){
+    document.getElementById("count").textContent="সব Heart তোমার! 💖";
+    document.getElementById("task1next").classList.remove("hidden");
+   }
   };
-
-  grid.appendChild(b);
+  box.appendChild(h);
+ }
 }
 
-// ==================================
-// FINAL LETTER
-// ==================================
-
-function openLetter(){
-  document.getElementById("letter").classList.remove("hidden");
-  document.getElementById("forgiveArea").classList.remove("hidden");
-  document.getElementById("openLetter").classList.add("hidden");
+// Task 4: memory matching
+let first=null,lock=false,matches=0;
+function makeMatch(){
+ const values=["💗","🌸","🧸","💗","🌸","🧸"];
+ values.sort(()=>Math.random()-.5);
+ const board=document.getElementById("match");
+ board.innerHTML="";
+ first=null;lock=false;matches=0;
+ document.getElementById("matchStatus").textContent="Matched: 0 / 3";
+ document.getElementById("next4").classList.add("hidden");
+ values.forEach((value,i)=>{
+  const b=document.createElement("button");
+  b.textContent="❔";
+  b.dataset.value=value;
+  b.onclick=()=>{
+   if(lock||b.classList.contains("done")||b===first)return;
+   b.textContent=value;
+   if(!first){first=b;return;}
+   if(first.dataset.value===b.dataset.value){
+    first.classList.add("done");b.classList.add("done");
+    first=null;matches++;
+    document.getElementById("matchStatus").textContent="Matched: "+matches+" / 3";
+    if(matches===3){
+     document.getElementById("matchStatus").textContent="সব জোড়া মিলে গেছে! 💞";
+     document.getElementById("bar4").style.width="100%";
+     document.getElementById("next4").classList.remove("hidden");
+    }
+   }else{
+    lock=true;
+    const old=first;first=null;
+    setTimeout(()=>{old.textContent="❔";b.textContent="❔";lock=false},650);
+   }
+  };
+  board.appendChild(b);
+ });
 }
-
-// ==================================
-// FORGIVENESS
-// ==================================
-
-function forgive(){
-  document.getElementById("finalFeedback").innerHTML=
-  "Yay! ❤️ তোমার হাসিটা যেন সবসময় এমনই থাকে। Love You! 💖";
-
-  celebration();
+function finish(){
+ show("final");
+ for(let i=0;i<35;i++)spawn("💖");
 }
-
-function notYet(){
-  document.getElementById("finalFeedback").innerHTML=
-  "কোনো তাড়া নেই। তোমার সময় নাও। আমি তোমার কথা শুনতে প্রস্তুত। 🫂";
+function celebrate(){
+ document.getElementById("hug").textContent="অনেক অনেক ভালোবাসা আর একটা বড় Hug! 🫂❤️";
+ for(let i=0;i<20;i++)spawn("💕");
 }
-
-// ==================================
-// CELEBRATION
-// ==================================
-
-function celebration(){
-  for(let i=0;i<40;i++){
-    setTimeout(floatingHeart,i*80);
-  }
+function spawn(symbol){
+ const p=document.createElement("span");
+ p.className="particle";p.textContent=symbol;
+ p.style.left=Math.random()*100+"%";
+ p.style.fontSize=(17+Math.random()*22)+"px";
+ p.style.animationDuration=(5+Math.random()*6)+"s";
+ document.getElementById("particles").appendChild(p);
+ setTimeout(()=>p.remove(),11000);
 }
-
+for(let i=0;i<28;i++){
+ setTimeout(()=>spawn(["💗","💕","✨","🌸"][i%4]),i*350);
+}
 </script>
 </body>
 </html>
