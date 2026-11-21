@@ -1,0 +1,669 @@
+
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#100817">
+<title>Only For You ❤️</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,600;1,700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --pink:#ff8dbb;
+  --light:#ffd3e5;
+  --purple:#9b70d6;
+  --dark:#100817;
+  --glass:rgba(255,255,255,.075);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  min-height:100vh;
+  background:var(--dark);
+  color:white;
+  font-family:'Hind Siliguri',sans-serif;
+  overflow-x:hidden;
+}
+body:before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-3;
+  background:
+  radial-gradient(ellipse at 15% 15%,#77325b70,transparent 45%),
+  radial-gradient(ellipse at 85% 80%,#633b9b65,transparent 45%),
+  linear-gradient(145deg,#100817,#1c102a,#0a0712);
+}
+#stars,#particles{
+  position:fixed;inset:0;
+  overflow:hidden;pointer-events:none;
+  z-index:-1;
+}
+.star{
+  position:absolute;
+  background:white;
+  border-radius:50%;
+  animation:twinkle 3s infinite alternate;
+}
+@keyframes twinkle{
+  from{opacity:.15;transform:scale(.6)}
+  to{opacity:1;transform:scale(1.4)}
+}
+.particle{
+  position:absolute;
+  bottom:-50px;
+  animation:rise linear forwards;
+  opacity:.75;
+}
+@keyframes rise{
+  to{transform:translateY(-115vh) rotate(360deg);opacity:0}
+}
+.screen{
+  display:none;
+  min-height:100vh;
+  padding:25px 17px;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+}
+.screen.active{display:flex;animation:appear .7s ease}
+@keyframes appear{
+  from{opacity:0;transform:translateY(18px)}
+  to{opacity:1;transform:translateY(0)}
+}
+.wrap{width:100%;max-width:490px;margin:auto}
+.card{
+  width:100%;
+  padding:30px 23px;
+  border-radius:27px;
+  background:var(--glass);
+  border:1px solid #ffffff20;
+  backdrop-filter:blur(20px);
+  box-shadow:0 20px 70px #0005,0 0 30px #ff82b21a;
+  text-align:center;
+}
+.top-label{
+  color:#ffb5d2;
+  font-size:13px;
+  letter-spacing:3px;
+  margin-bottom:14px;
+}
+h1{
+  font-size:clamp(29px,8vw,43px);
+  line-height:1.35;
+  color:#ffd1e4;
+  text-shadow:0 0 20px #ff7db255;
+  margin-bottom:13px;
+}
+h2{font-size:26px;color:#ffc3dc;margin-bottom:12px}
+p{
+  font-size:16px;
+  line-height:1.9;
+  color:#f1dfed;
+}
+.glow{
+  color:#ffacd0;
+  text-shadow:0 0 15px #ff69aa;
+}
+.big-heart{
+  font-size:76px;
+  display:block;
+  margin:15px 0;
+  animation:beat 1.4s infinite;
+}
+@keyframes beat{
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.17)}
+}
+button{
+  font-family:inherit;
+  cursor:pointer;
+  border:none;
+  transition:.25s;
+}
+button:active{transform:scale(.96)}
+.primary{
+  display:inline-block;
+  padding:13px 26px;
+  margin-top:20px;
+  border-radius:50px;
+  color:#481c36;
+  font-size:16px;
+  font-weight:700;
+  background:linear-gradient(120deg,#ffb2d2,#f36da8);
+  box-shadow:0 7px 28px #ff65a744;
+}
+.primary:hover{transform:translateY(-3px);box-shadow:0 10px 35px #ff65a777}
+.secondary{
+  background:#ffffff10;
+  color:#ffe1ee;
+  border:1px solid #ffffff35;
+  padding:12px 22px;
+  border-radius:50px;
+  margin-top:12px;
+}
+input{
+  display:block;
+  width:100%;
+  padding:15px;
+  margin-top:18px;
+  border:1px solid #ffacd055;
+  border-radius:14px;
+  outline:none;
+  background:#ffffff0d;
+  color:white;
+  font-family:inherit;
+  font-size:17px;
+  text-align:center;
+}
+input::placeholder{color:#bba7bc}
+.progress{
+  width:100%;
+  height:6px;
+  border-radius:20px;
+  background:#ffffff18;
+  margin-bottom:25px;
+  overflow:hidden;
+}
+.fill{
+  height:100%;
+  width:0;
+  background:linear-gradient(90deg,#ff72a9,#c69aff);
+  transition:.5s;
+}
+.question{
+  margin:20px 0;
+  padding:16px;
+  background:#ffffff0a;
+  border:1px solid #ffffff15;
+  border-radius:16px;
+  color:#ffe2ef;
+  font-size:17px;
+}
+.option{
+  display:block;
+  width:100%;
+  margin-top:11px;
+  padding:14px;
+  border-radius:13px;
+  background:#ffffff0c;
+  border:1px solid #ffffff20;
+  color:white;
+  font-size:16px;
+}
+.option:hover{background:#ff8dbb25;border-color:#ff9fc8}
+.feedback{
+  color:#ffb4d2;
+  min-height:35px;
+  margin-top:15px;
+  font-size:16px;
+}
+.music-control{
+  position:fixed;
+  right:15px;
+  top:15px;
+  z-index:10;
+}
+.music-control button{
+  background:#ffffff16;
+  border:1px solid #ffffff35;
+  border-radius:50px;
+  color:white;
+  padding:10px 14px;
+  backdrop-filter:blur(10px);
+}
+.letter{
+  margin-top:20px;
+  padding:21px;
+  text-align:left;
+  border-radius:18px;
+  background:linear-gradient(145deg,#ffffff0c,#ff8dbb0d);
+  border:1px solid #ffb5d52b;
+}
+.letter p{margin-bottom:14px}
+.letter h2{text-align:center}
+.letter .sign{text-align:right;color:#ffbad8;font-size:20px}
+.heart-grid{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:9px;
+  margin:22px 0;
+}
+.heart-box{
+  padding:13px 3px;
+  font-size:27px;
+  border-radius:13px;
+  color:white;
+  background:#ffffff10;
+  border:1px solid #ffffff18;
+}
+.heart-box.done{opacity:.3;pointer-events:none}
+.hidden{display:none!important}
+.final-buttons{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  justify-content:center;
+}
+footer{
+  color:#bda9bd;
+  font-size:12px;
+  text-align:center;
+  padding:20px;
+}
+@media(max-width:370px){
+  .card{padding:24px 16px}
+  h2{font-size:23px}
+  .heart-box{font-size:23px;padding:12px 2px}
+}
+</style>
+</head>
+
+<body>
+
+<div id="stars"></div>
+<div id="particles"></div>
+
+<!-- MUSIC -->
+<audio id="music" loop preload="none">
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<div class="music-control">
+  <button onclick="toggleMusic()" id="musicBtn">🎵 Music OFF</button>
+</div>
+
+<!-- SCREEN 1: PASSWORD -->
+<section class="screen active" id="password">
+<div class="wrap">
+<div class="card">
+  <div class="top-label">A LITTLE SECRET FOR YOU</div>
+  <span class="big-heart">🔐</span>
+  <h1>Only For You</h1>
+  <p>এই ছোট্ট surprise শুধু তোমার জন্য।<br>প্রথমে secret password দিতে হবে। 💗</p>
+  <input type="password" id="pass" placeholder="Enter Secret Password">
+  <button class="primary" onclick="unlock()">Unlock My Heart ❤️</button>
+  <div class="feedback" id="passMsg"></div>
+  <p style="font-size:12px;color:#bba8bd">A secret world made with love ✨</p>
+</div>
+</div>
+</section>
+
+<!-- SCREEN 2: WELCOME -->
+<section class="screen" id="welcome">
+<div class="wrap">
+<div class="card">
+  <div class="top-label">WELCOME TO MY LITTLE WORLD</div>
+  <span class="big-heart">💗</span>
+  <h1>Hey, My Love!</h1>
+  <p>
+    জানি তুমি আমার ওপর অভিমান করে আছো।<br>
+    তোমার মন ভালো করার জন্য<br>
+    একটা ছোট্ট surprise বানিয়েছি।
+    <br><br>
+    এখানে কয়েকটা ছোট্ট task আছে।<br>
+    সবগুলো complete করলে শেষ surprise পাবে। 🥹
+  </p>
+  <button class="primary" onclick="startGame()">Let's Begin 💌</button>
+</div>
+</div>
+</section>
+
+<!-- PUZZLE 1 -->
+<section class="screen" id="puzzle1">
+<div class="wrap">
+<div class="card">
+  <div class="top-label">LEVEL 01 · THE RIDDLE</div>
+  <div class="progress"><div class="fill" id="progress1"></div></div>
+  <h2>একটা ধাঁধা আছে! 🥺</h2>
+  <div class="question">
+    চোখে দেখা যায় না,<br>
+    কিন্তু মন দিয়ে অনুভব করা যায়।<br>
+    দূরে থেকেও দুজনকে কাছে রাখে।<br><br>
+    সেটা কী?
+  </div>
+  <button class="option" onclick="puzzle1('money')">💰 টাকা</button>
+  <button class="option" onclick="puzzle1('love')">❤️ ভালোবাসা</button>
+  <button class="option" onclick="puzzle1('sleep')">😴 ঘুম</button>
+  <div class="feedback" id="feedback1"></div>
+</div>
+</div>
+</section>
+
+<!-- PUZZLE 2 -->
+<section class="screen" id="puzzle2">
+<div class="wrap">
+<div class="card">
+  <div class="top-label">LEVEL 02 · SECRET WORD</div>
+  <div class="progress"><div class="fill" id="progress2"></div></div>
+  <h2>Secret Message 💌</h2>
+  <p>অক্ষরগুলো এলোমেলো হয়ে গেছে।<br>সঠিক শব্দটা খুঁজে বের করো!</p>
+  <div class="question glow" style="font-size:35px;letter-spacing:9px">
+    Y R R O S
+  </div>
+  <input id="secretWord" placeholder="Type your answer">
+  <button class="primary" onclick="puzzle2()">Check Answer 🔓</button>
+  <div class="feedback" id="feedback2"></div>
+</div>
+</div>
+</section>
+
+<!-- PUZZLE 3 -->
+<section class="screen" id="puzzle3">
+<div class="wrap">
+<div class="card">
+  <div class="top-label">LEVEL 03 · COLLECT LOVE</div>
+  <div class="progress"><div class="fill" id="progress3"></div></div>
+  <h2>Collect 10 Hearts ❤️</h2>
+  <p>সবগুলো heart-এ touch করো।<br>প্রতিটা heart তোমার জন্য!</p>
+  <div class="question glow" id="count">0 / 10 ❤️</div>
+  <div class="heart-grid" id="heartGrid"></div>
+  <div class="feedback" id="feedback3"></div>
+</div>
+</div>
+</section>
+
+<!-- FINAL SCREEN -->
+<section class="screen" id="final">
+<div class="wrap">
+<div class="card">
+  <div class="top-label">YOU UNLOCKED MY HEART</div>
+  <span class="big-heart">💖</span>
+  <h1>One Last Surprise!</h1>
+  <p>
+    সব task complete করেছো!<br>
+    এবার আমার মনের কথাগুলো শোনো।
+  </p>
+
+  <button class="primary" id="openLetter" onclick="openLetter()">
+    Open Your Love Letter 💌
+  </button>
+
+  <div class="letter hidden" id="letter">
+    <h2>প্রিয় ভালোবাসা ❤️</h2>
+
+    <p>
+      জানি তুমি আমার ওপর অভিমান করে আছো।
+      হয়তো আমার কোনো কথা বা কাজ তোমাকে কষ্ট দিয়েছে।
+      আর তার জন্য আমি সত্যিই দুঃখিত।
+    </p>
+
+    <p>
+      আমি হয়তো সবসময় ঠিক হতে পারি না।
+      কখনও কখনও তোমার মনের কথা বুঝতেও ভুল করি।
+      কিন্তু বিশ্বাস করো, তোমার অনুভূতিগুলো আমার কাছে অনেক গুরুত্বপূর্ণ।
+    </p>
+
+    <p>
+      আমি চাই না শুধু একটা Sorry বলে সব ঠিক হয়ে যাক।
+      আমি চাই তোমার কথা শুনতে, তোমাকে বুঝতে
+      এবং আমার ভুলগুলো শুধরে নিতে।
+    </p>
+
+    <p>
+      তুমি রাগ করো, অভিমান করো, সময় নাও।
+      তোমার অনুভূতিকে আমি সম্মান করি।
+      শুধু যখন মন চাইবে, আমার সঙ্গে একটু কথা বলো।
+    </p>
+
+    <p>
+      তোমার হাসিটা আমার খুব প্রিয়।
+      তোমার মুখে হাসি থাকলে আমারও মন ভালো হয়ে যায়।
+    </p>
+
+    <p style="text-align:center;color:#ffb4d4;font-size:21px">
+      I AM REALLY SORRY 🥺<br>
+      I LOVE YOU SO MUCH ❤️
+    </p>
+
+    <div class="sign">— তোমারই একজন 💗</div>
+  </div>
+
+  <div id="forgiveArea" class="hidden">
+    <h2 style="margin-top:25px">Will You Forgive Me? 🥹</h2>
+    <p>একটা ছোট্ট উত্তর দেবে?</p>
+
+    <div class="final-buttons">
+      <button class="primary" onclick="forgive()">Yes, I Forgive You ❤️</button>
+      <button class="secondary" onclick="notYet()">Not Yet 🙈</button>
+    </div>
+    <div class="feedback" id="finalFeedback"></div>
+  </div>
+
+</div>
+</div>
+</section>
+
+<footer>Made with ❤️ just for you</footer>
+
+<script>
+
+// ==================================
+// CUSTOM SETTINGS
+// ==================================
+
+const SECRET_PASSWORD = "LOVE123";
+
+// ==================================
+// STAR BACKGROUND
+// ==================================
+
+const stars=document.getElementById("stars");
+
+for(let i=0;i<110;i++){
+  const s=document.createElement("div");
+  s.className="star";
+  s.style.left=Math.random()*100+"%";
+  s.style.top=Math.random()*100+"%";
+  s.style.width=(Math.random()*3+1)+"px";
+  s.style.height=s.style.width;
+  s.style.animationDelay=Math.random()*3+"s";
+  stars.appendChild(s);
+}
+
+// ==================================
+// FLOATING HEARTS
+// ==================================
+
+function floatingHeart(){
+  const h=document.createElement("div");
+  h.className="particle";
+  h.innerHTML=["💗","💕","💖","🌸","✨"][Math.floor(Math.random()*5)];
+  h.style.left=Math.random()*100+"%";
+  h.style.fontSize=(Math.random()*20+15)+"px";
+  h.style.animationDuration=(Math.random()*5+5)+"s";
+
+  document.getElementById("particles").appendChild(h);
+
+  setTimeout(()=>h.remove(),11000);
+}
+
+setInterval(floatingHeart,650);
+
+// ==================================
+// MUSIC CONTROL
+// ==================================
+
+const music=document.getElementById("music");
+let musicOn=false;
+
+async function toggleMusic(){
+  if(!musicOn){
+    try{
+      await music.play();
+      musicOn=true;
+      document.getElementById("musicBtn").innerHTML="🎵 Music ON";
+    }catch(e){
+      alert("music.mp3 ফাইলটি GitHub-এ upload করো।");
+    }
+  }else{
+    music.pause();
+    musicOn=false;
+    document.getElementById("musicBtn").innerHTML="🎵 Music OFF";
+  }
+}
+
+// ==================================
+// SCREEN CHANGE
+// ==================================
+
+function showScreen(id){
+  document.querySelectorAll(".screen").forEach(s=>{
+    s.classList.remove("active");
+  });
+
+  document.getElementById(id).classList.add("active");
+
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+// ==================================
+// PASSWORD
+// ==================================
+
+function unlock(){
+  const input=document.getElementById("pass").value;
+
+  if(input===SECRET_PASSWORD){
+    document.getElementById("passMsg").innerHTML="Password Correct! 💗";
+
+    showScreen("welcome");
+
+    // Music may require another tap in browser
+    if(!musicOn){
+      music.play().then(()=>{
+        musicOn=true;
+        document.getElementById("musicBtn").innerHTML="🎵 Music ON";
+      }).catch(()=>{});
+    }
+  }else{
+    document.getElementById("passMsg").innerHTML="Oops! ভুল password 🥺";
+  }
+}
+
+document.getElementById("pass").addEventListener("keydown",e=>{
+  if(e.key==="Enter")unlock();
+});
+
+// ==================================
+// START
+// ==================================
+
+function startGame(){
+  showScreen("puzzle1");
+}
+
+// ==================================
+// PUZZLE 1
+// ==================================
+
+function puzzle1(answer){
+  const msg=document.getElementById("feedback1");
+
+  if(answer==="love"){
+    msg.innerHTML="একদম ঠিক! ভালোবাসা ❤️";
+    document.getElementById("progress1").style.width="100%";
+
+    setTimeout(()=>showScreen("puzzle2"),1300);
+  }else{
+    msg.innerHTML="আবার চেষ্টা করো, একটু ভাবো! 😊";
+  }
+}
+
+// ==================================
+// PUZZLE 2
+// ==================================
+
+function puzzle2(){
+  const answer=document.getElementById("secretWord").value.trim().toUpperCase();
+
+  if(answer==="SORRY"){
+    document.getElementById("feedback2").innerHTML="সঠিক উত্তর! 🥹❤️";
+    document.getElementById("progress2").style.width="100%";
+
+    setTimeout(()=>showScreen("puzzle3"),1300);
+  }else{
+    document.getElementById("feedback2").innerHTML="ভুল হয়েছে! Hint: S দিয়ে শুরু হয় ❤️";
+  }
+}
+
+document.getElementById("secretWord").addEventListener("keydown",e=>{
+  if(e.key==="Enter")puzzle2();
+});
+
+// ==================================
+// PUZZLE 3
+// ==================================
+
+const grid=document.getElementById("heartGrid");
+let collected=0;
+
+for(let i=0;i<10;i++){
+  const b=document.createElement("button");
+
+  b.className="heart-box";
+  b.innerHTML="💗";
+
+  b.onclick=()=>{
+    if(b.classList.contains("done"))return;
+
+    b.classList.add("done");
+    b.innerHTML="✨";
+
+    collected++;
+
+    document.getElementById("count").innerHTML=collected+" / 10 ❤️";
+
+    document.getElementById("progress3").style.width=(collected*10)+"%";
+
+    if(collected===10){
+      document.getElementById("feedback3").innerHTML="সব heart তোমার! ❤️";
+      setTimeout(()=>showScreen("final"),1500);
+    }
+  };
+
+  grid.appendChild(b);
+}
+
+// ==================================
+// FINAL LETTER
+// ==================================
+
+function openLetter(){
+  document.getElementById("letter").classList.remove("hidden");
+  document.getElementById("forgiveArea").classList.remove("hidden");
+  document.getElementById("openLetter").classList.add("hidden");
+}
+
+// ==================================
+// FORGIVENESS
+// ==================================
+
+function forgive(){
+  document.getElementById("finalFeedback").innerHTML=
+  "Yay! ❤️ তোমার হাসিটা যেন সবসময় এমনই থাকে। Love You! 💖";
+
+  celebration();
+}
+
+function notYet(){
+  document.getElementById("finalFeedback").innerHTML=
+  "কোনো তাড়া নেই। তোমার সময় নাও। আমি তোমার কথা শুনতে প্রস্তুত। 🫂";
+}
+
+// ==================================
+// CELEBRATION
+// ==================================
+
+function celebration(){
+  for(let i=0;i<40;i++){
+    setTimeout(floatingHeart,i*80);
+  }
+}
+
+</script>
+</body>
+</html>
