@@ -5,121 +5,233 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>For My Happiness ❤️</title>
+
+<!-- Emoji support -->
+<script src="https://cdn.jsdelivr.net/npm/@twemoji/api@latest/dist/twemoji.min.js"></script>
+
 <style>
 *{box-sizing:border-box}
+
 body{
- margin:0;min-height:100vh;color:white;text-align:center;
- font-family:system-ui,Arial,sans-serif;
- background:radial-gradient(ellipse at top,#a52b65 0%,#50102f 48%,#190819 100%);
+ margin:0;
+ min-height:100vh;
+ color:white;
+ text-align:center;
+ font-family:Arial,sans-serif;
+ background:radial-gradient(ellipse at top,#a52b65,#50102f 55%,#190819);
  overflow-x:hidden;
 }
-body:before{
- content:"";position:fixed;inset:0;pointer-events:none;
- background:radial-gradient(circle at 20% 20%,#ff8ab433,transparent 30%),
- radial-gradient(circle at 80% 80%,#ff4f9233,transparent 35%);
+
+#particles{
+ position:fixed;
+ inset:0;
+ pointer-events:none;
+ overflow:hidden;
+ z-index:0;
 }
-#particles{position:fixed;inset:0;pointer-events:none;overflow:hidden}
+
 .particle{
- position:absolute;bottom:-40px;animation:floatUp linear infinite;
- opacity:.7;filter:drop-shadow(0 0 8px #ff8cbd);
+ position:absolute;
+ bottom:-40px;
+ animation:floatUp linear forwards;
+ opacity:.8;
+ filter:drop-shadow(0 0 8px #ff8cbd);
 }
+
 @keyframes floatUp{
  to{transform:translateY(-115vh) rotate(360deg);opacity:0}
 }
+
 .screen{
- min-height:100vh;display:none;align-items:center;
- justify-content:center;padding:22px;position:relative;z-index:1;
+ min-height:100vh;
+ display:none;
+ align-items:center;
+ justify-content:center;
+ padding:22px;
+ position:relative;
+ z-index:1;
 }
-.screen.active{display:flex;animation:appear .65s ease}
+
+.screen.active{
+ display:flex;
+ animation:appear .6s ease;
+}
+
 @keyframes appear{
  from{opacity:0;transform:translateY(20px) scale(.97)}
  to{opacity:1;transform:translateY(0) scale(1)}
 }
+
 .card{
- width:min(100%,440px);padding:28px 20px;border-radius:28px;
- background:linear-gradient(145deg,#ffffff20,#ffffff09);
- border:1px solid #ffffff42;
+ width:min(100%,440px);
+ padding:28px 20px;
+ border-radius:28px;
+ background:linear-gradient(145deg,#ffffff25,#ffffff09);
+ border:1px solid #ffffff45;
  box-shadow:0 15px 55px #08000b66,inset 0 1px #ffffff25;
  backdrop-filter:blur(16px);
 }
-h1{font-size:27px;color:#ffd7e7;margin:10px 0}
+
+h1{font-size:27px;color:#ffd7e7}
 h2{font-size:23px;color:#ffe0ed}
 p{line-height:1.7;color:#ffe8f1}
-.hero{font-size:75px;animation:heartbeat 1.3s infinite}
+
+img.emoji{
+ width:1.2em;
+ height:1.2em;
+ vertical-align:-0.2em;
+ display:inline-block;
+}
+
+.hero{
+ font-size:75px;
+ animation:heartbeat 1.3s infinite;
+}
+
 @keyframes heartbeat{
  0%,100%{transform:scale(1)}
  15%{transform:scale(1.13)}
  30%{transform:scale(1)}
  45%{transform:scale(1.1)}
 }
+
 button{
- border:0;padding:13px 23px;margin:7px;border-radius:30px;
+ border:0;
+ padding:13px 23px;
+ margin:7px;
+ border-radius:30px;
  background:linear-gradient(120deg,#ffd0e1,#ff82b1);
- color:#74153e;font-size:15px;font-weight:800;
- cursor:pointer;box-shadow:0 5px 20px #ff5b9c44;
+ color:#74153e;
+ font-size:15px;
+ font-weight:bold;
+ cursor:pointer;
+ box-shadow:0 5px 20px #ff5b9c44;
  transition:.2s;
 }
+
+button:hover{filter:brightness(1.1);transform:translateY(-2px)}
 button:active{transform:scale(.94)}
-button:hover{filter:brightness(1.08);transform:translateY(-2px)}
+
 input{
- padding:14px;width:85%;border:1px solid #ffffff66;
- border-radius:25px;text-align:center;font-size:16px;
- background:#ffffffed;color:#651238;outline:none;
+ padding:14px;
+ width:85%;
+ border:1px solid #ffffff66;
+ border-radius:25px;
+ text-align:center;
+ font-size:16px;
+ background:#ffffffed;
+ color:#651238;
+ outline:none;
 }
+
 .progress{
- height:9px;background:#ffffff25;border-radius:20px;
- overflow:hidden;margin:18px 0;
+ height:9px;
+ background:#ffffff25;
+ border-radius:20px;
+ overflow:hidden;
+ margin:18px 0;
 }
-#bar{
- height:100%;width:0;background:linear-gradient(90deg,#ff8cbd,#ffe0eb);
- border-radius:20px;transition:.5s;
+
+.progress div{
+ height:100%;
+ width:0;
+ background:linear-gradient(90deg,#ff8cbd,#ffe0eb);
+ border-radius:20px;
+ transition:.5s;
 }
+
 .stage{font-size:13px;color:#ffc5dc}
+
 .options{
- display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:20px 0;
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:10px;
+ margin:20px 0;
 }
+
 .options button{margin:0;min-height:55px}
+
+.task-emoji{font-size:62px;margin:12px}
+
+.heart-box{
+ display:flex;
+ justify-content:center;
+ flex-wrap:wrap;
+ gap:16px;
+ padding:20px 5px;
+}
+
 .heart{
- display:inline-grid;place-items:center;font-size:35px;
- cursor:pointer;transition:.2s;user-select:none;
+ display:inline-grid;
+ place-items:center;
+ font-size:35px;
+ cursor:pointer;
+ transition:.2s;
  animation:heartbeat 1.5s infinite;
 }
+
 .heart:active{transform:scale(.7)}
-.heart-box{
- display:flex;justify-content:center;flex-wrap:wrap;
- gap:16px;padding:20px 5px;
-}
-.task-emoji{font-size:62px;margin:12px}
+
 .message{
- padding:17px;border-radius:20px;background:#ffffff17;
- border:1px solid #ffffff35;margin:15px 0;
+ padding:17px;
+ border-radius:20px;
+ background:#ffffff17;
+ border:1px solid #ffffff35;
+ margin:15px 0;
 }
-#feedback{min-height:27px;color:#ffe1a9}
-.hidden{display:none!important}
+
 .match{
- display:grid;grid-template-columns:repeat(3,1fr);gap:9px;
- max-width:280px;margin:20px auto;
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:10px;
+ max-width:290px;
+ margin:20px auto;
 }
+
 .match button{
- margin:0;padding:10px;font-size:29px;min-height:72px;
- background:#ffffff20;color:white;border:1px solid #ffffff44;
+ margin:0;
+ padding:10px;
+ font-size:30px;
+ min-height:75px;
+ background:#ffffff20;
+ color:white;
+ border:1px solid #ffffff44;
 }
-.match button.done{background:#ff8bb8;color:#6e1539}
-.bigfinal{font-size:85px;animation:heartbeat 1s infinite}
+
+.match button.done{
+ background:#ff8bb8;
+ color:#6e1539;
+}
+
+.match button.wild{
+ background:#ffe1ed;
+ color:#b51d59;
+}
+
+.hidden{display:none!important}
+
+#final .bigfinal{
+ font-size:85px;
+ animation:heartbeat 1s infinite;
+}
 </style>
 </head>
+
 <body>
+
 <div id="particles"></div>
 
-<!-- PASSWORD -->
+<!-- PASSWORD SCREEN -->
 <section class="screen active" id="login">
  <div class="card">
   <div class="hero">💗</div>
   <h1>Hello My Happiness!</h1>
   <p>তোমার জন্য আমার ছোট্ট একটা Surprise আছে। 🥺</p>
-  <p>🔐 Password হবে Saheb-এর Mobile Number ❤️” ❤️</p>
-  <input id="password" type="password" placeholder="Secret Password">
-  <br><button onclick="unlock()">Open My Heart 💌</button>
+  <p>প্রথমে Secret Password দাও ❤️</p>
+  <input id="password" type="password" placeholder="Enter Password">
+  <br>
+  <button onclick="unlock()">Open My Heart 💌</button>
+  <p>Hint: Saheb-এর Mobile Number 🔐</p>
   <p id="loginError"></p>
  </div>
 </section>
@@ -140,13 +252,13 @@ input{
 <section class="screen" id="task1">
  <div class="card">
   <div class="stage">TASK 1 / 6</div>
-  <div class="progress"><div id="bar"></div></div>
+  <div class="progress"><div id="bar1"></div></div>
   <div class="task-emoji">💗</div>
   <h2>Catch My Love!</h2>
   <p>নিচের ৫টা Heart-এ Tap করো। সবগুলো তোমার জন্য! 🥰</p>
   <div class="heart-box" id="hearts"></div>
   <p id="count">0 / 5 collected</p>
-  <button id="task1next" class="hidden" onclick="go(2)">Next Task 💕</button>
+  <button id="next1" class="hidden" onclick="go(2)">Next Task 💕</button>
  </div>
 </section>
 
@@ -160,7 +272,7 @@ input{
   <p>আমার Happiness কে?</p>
   <div class="options">
    <button onclick="answer(2,false)">চাঁদ 🌙</button>
-   <button onclick="answer(2,true)">তুমি ❤️</button>
+   <button onclick="answer(2,true)">আমি ❤️</button>
    <button onclick="answer(2,false)">তারকা ⭐</button>
    <button onclick="answer(2,false)">পুতুল 🧸</button>
   </div>
@@ -176,7 +288,7 @@ input{
   <div class="progress"><div id="bar3"></div></div>
   <div class="task-emoji">🌸</div>
   <h2>Little Memory Test</h2>
-  <p>একটু ভালো করে দেখো, তারপর বলো—এখানে কয়টা Heart আছে?</p>
+  <p>এখানে কয়টা Heart আছে?</p>
   <div class="message" style="font-size:35px">❤️ 💗 ❤️</div>
   <div class="options">
    <button onclick="answer(3,false)">২টা</button>
@@ -196,9 +308,9 @@ input{
   <div class="progress"><div id="bar4"></div></div>
   <div class="task-emoji">🧩</div>
   <h2>Heart Matching!</h2>
-  <p>একই রকম ৩ জোড়া Emoji খুঁজে বের করো।</p>
+  <p>একই রকম ৪ জোড়া Emoji খুঁজে বের করো। ৯ নম্বর কার্ডটি Special Heart! ❤️</p>
   <div class="match" id="match"></div>
-  <p id="matchStatus">Matched: 0 / 3</p>
+  <p id="matchStatus">Matched: 0 / 4</p>
   <button id="next4" class="hidden" onclick="go(5)">Next Task 💕</button>
  </div>
 </section>
@@ -231,7 +343,7 @@ input{
  </div>
 </section>
 
-<!-- FINAL -->
+<!-- FINAL SURPRISE -->
 <section class="screen" id="final">
  <div class="card">
   <div class="bigfinal">❤️</div>
@@ -249,121 +361,273 @@ input{
 </section>
 
 <script>
-function show(id){
- document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));
- document.getElementById(id).classList.add("active");
-}
-function unlock(){
- if(document.getElementById("password").value==="8768630077"){
-  show("intro");
- }else{
-  document.getElementById("loginError").textContent="Wrong password, Happiness 🥺";
+
+/* PASSWORD CHANGE HERE */
+const PASSWORD = "8768630077";
+
+function parseEmojis(){
+ if(window.twemoji){
+  twemoji.parse(document.body,{
+   folder:"svg",
+   ext:".svg"
+  });
  }
 }
+
+window.addEventListener("load",parseEmojis);
+
+const observer=new MutationObserver(()=>{
+ parseEmojis();
+});
+observer.observe(document.body,{
+ childList:true,
+ subtree:true
+});
+
+function show(id){
+ document.querySelectorAll(".screen").forEach(s=>{
+  s.classList.remove("active");
+ });
+ document.getElementById(id).classList.add("active");
+ parseEmojis();
+}
+
+function unlock(){
+ const entered=document.getElementById("password").value;
+
+ if(entered===PASSWORD){
+  show("intro");
+ }else{
+  document.getElementById("loginError").textContent=
+   "ভুল Password, Happiness! আবার চেষ্টা করো 🥺";
+ }
+}
+
 function go(n){
  show("task"+n);
+
  if(n===1)makeHearts();
  if(n===4)makeMatch();
 }
+
 function answer(task,correct){
  const feedback=document.getElementById("feedback"+task);
+
  if(task===5){
   feedback.textContent="Yayyy! I love you, Happiness! ❤️";
+  document.getElementById("bar5").style.width="100%";
   document.getElementById("next5").classList.remove("hidden");
   return;
  }
+
  if(correct){
   feedback.textContent="একদম ঠিক! তুমি খুব ভালো! 😘";
-  document.getElementById("next"+task).classList.remove("hidden");
   document.getElementById("bar"+task).style.width="100%";
+  document.getElementById("next"+task).classList.remove("hidden");
  }else{
   feedback.textContent="আবার চেষ্টা করো, Happiness! 🥺";
  }
 }
 
-// Task 1: collect five hearts
+/* TASK 1: COLLECT HEARTS */
 let collected=0;
+
 function makeHearts(){
  collected=0;
+
  const box=document.getElementById("hearts");
  box.innerHTML="";
+
  document.getElementById("count").textContent="0 / 5 collected";
- document.getElementById("task1next").classList.add("hidden");
+ document.getElementById("next1").classList.add("hidden");
+ document.getElementById("bar1").style.width="0%";
+
  for(let i=0;i<5;i++){
   const h=document.createElement("span");
-  h.className="heart";h.textContent="💗";
+  h.className="heart";
+  h.textContent="💗";
+
   h.onclick=()=>{
    if(h.dataset.hit)return;
-   h.dataset.hit="yes";h.style.opacity=".25";
+
+   h.dataset.hit="yes";
+   h.style.opacity=".25";
    h.style.transform="scale(1.5)";
+
    collected++;
-   document.getElementById("count").textContent=collected+" / 5 collected";
-   document.getElementById("bar").style.width=(collected*20)+"%";
+
+   document.getElementById("count").textContent=
+    collected+" / 5 collected";
+
+   document.getElementById("bar1").style.width=
+    (collected*20)+"%";
+
    if(collected===5){
-    document.getElementById("count").textContent="সব Heart তোমার! 💖";
-    document.getElementById("task1next").classList.remove("hidden");
+    document.getElementById("count").textContent=
+     "সব Heart তোমার! 💖";
+
+    document.getElementById("next1").classList.remove("hidden");
    }
   };
+
   box.appendChild(h);
  }
+
+ parseEmojis();
 }
 
-// Task 4: memory matching
-let first=null,lock=false,matches=0;
+/* TASK 4: NINE CARD MATCHING GAME */
+let first=null;
+let lock=false;
+let matches=0;
+let specialFound=false;
+
 function makeMatch(){
- const values=["💗","🌸","🧸","💗","🌸","🧸"];
+
+ const values=[
+  "💗","🌸","🧸",
+  "💗","🌸","🧸",
+  "😘","😘","❤️"
+ ];
+
  values.sort(()=>Math.random()-.5);
+
  const board=document.getElementById("match");
  board.innerHTML="";
- first=null;lock=false;matches=0;
- document.getElementById("matchStatus").textContent="Matched: 0 / 3";
+
+ first=null;
+ lock=false;
+ matches=0;
+ specialFound=false;
+
+ document.getElementById("matchStatus").textContent=
+  "Matched: 0 / 4";
+
+ document.getElementById("bar4").style.width="0%";
  document.getElementById("next4").classList.add("hidden");
- values.forEach((value,i)=>{
+
+ values.forEach(value=>{
+
   const b=document.createElement("button");
   b.textContent="❔";
   b.dataset.value=value;
+
   b.onclick=()=>{
-   if(lock||b.classList.contains("done")||b===first)return;
+
+   if(lock || b.classList.contains("done") || b===first)return;
+
    b.textContent=value;
-   if(!first){first=b;return;}
-   if(first.dataset.value===b.dataset.value){
-    first.classList.add("done");b.classList.add("done");
-    first=null;matches++;
-    document.getElementById("matchStatus").textContent="Matched: "+matches+" / 3";
-    if(matches===3){
-     document.getElementById("matchStatus").textContent="সব জোড়া মিলে গেছে! 💞";
-     document.getElementById("bar4").style.width="100%";
-     document.getElementById("next4").classList.remove("hidden");
-    }
-   }else{
-    lock=true;
-    const old=first;first=null;
-    setTimeout(()=>{old.textContent="❔";b.textContent="❔";lock=false},650);
+
+   /* Special heart card */
+   if(value==="❤️"){
+    b.classList.add("wild");
+    b.classList.add("done");
+    specialFound=true;
+
+    document.getElementById("matchStatus").textContent=
+     "Special Heart পেয়েছো! 💖";
+
+    checkMatchWin();
+    return;
    }
+
+   if(!first){
+    first=b;
+    return;
+   }
+
+   if(first.dataset.value===b.dataset.value){
+
+    first.classList.add("done");
+    b.classList.add("done");
+    first=null;
+
+    matches++;
+
+    document.getElementById("matchStatus").textContent=
+     "Matched: "+matches+" / 4";
+
+    document.getElementById("bar4").style.width=
+     (matches*25)+"%";
+
+    checkMatchWin();
+
+   }else{
+
+    lock=true;
+
+    const old=first;
+    first=null;
+
+    setTimeout(()=>{
+     old.textContent="❔";
+     b.textContent="❔";
+     lock=false;
+    },750);
+   }
+
+   parseEmojis();
   };
+
   board.appendChild(b);
  });
+
+ parseEmojis();
 }
+
+function checkMatchWin(){
+ if(matches===4 && specialFound){
+  document.getElementById("matchStatus").textContent=
+   "সব জোড়া মিলে গেছে! তুমি জিতে গেছো! ❤️";
+
+  document.getElementById("bar4").style.width="100%";
+
+  document.getElementById("next4").classList.remove("hidden");
+ }
+
+ parseEmojis();
+}
+
+/* FINAL SURPRISE */
 function finish(){
  show("final");
- for(let i=0;i<35;i++)spawn("💖");
+
+ for(let i=0;i<35;i++){
+  setTimeout(()=>spawn("💖"),i*100);
+ }
 }
+
 function celebrate(){
- document.getElementById("hug").textContent="অনেক অনেক ভালোবাসা আর একটা বড় Hug! 🫂❤️";
- for(let i=0;i<20;i++)spawn("💕");
+ document.getElementById("hug").textContent=
+  "অনেক অনেক ভালোবাসা আর একটা বড় Hug! 🫂❤️";
+
+ for(let i=0;i<25;i++){
+  setTimeout(()=>spawn("💕"),i*100);
+ }
 }
+
+/* FLOATING HEARTS */
 function spawn(symbol){
  const p=document.createElement("span");
- p.className="particle";p.textContent=symbol;
+
+ p.className="particle";
+ p.textContent=symbol;
+
  p.style.left=Math.random()*100+"%";
  p.style.fontSize=(17+Math.random()*22)+"px";
  p.style.animationDuration=(5+Math.random()*6)+"s";
+
  document.getElementById("particles").appendChild(p);
+
  setTimeout(()=>p.remove(),11000);
 }
+
 for(let i=0;i<28;i++){
- setTimeout(()=>spawn(["💗","💕","✨","🌸"][i%4]),i*350);
+ setTimeout(()=>{
+  spawn(["💗","💕","✨","🌸"][i%4]);
+ },i*350);
 }
+
 </script>
 </body>
 </html>
