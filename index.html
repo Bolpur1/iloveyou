@@ -6,7 +6,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>For My Happiness ❤️</title>
 
-<!-- Emoji support -->
 <script src="https://cdn.jsdelivr.net/npm/@twemoji/api@latest/dist/twemoji.min.js"></script>
 
 <style>
@@ -210,9 +209,71 @@ input{
 
 .hidden{display:none!important}
 
-#final .bigfinal{
- font-size:85px;
- animation:heartbeat 1s infinite;
+/* FINAL LOVE SCREEN */
+.love-screen{
+ position:fixed;
+ inset:0;
+ z-index:20;
+ display:none;
+ align-items:center;
+ justify-content:center;
+ flex-direction:column;
+ overflow:hidden;
+ background:radial-gradient(circle,#a72b65,#360b2b,#140512);
+ animation:loveAppear 1s ease;
+}
+
+.love-screen.active{display:flex}
+
+@keyframes loveAppear{
+ from{opacity:0}
+ to{opacity:1}
+}
+
+.love-text{
+ font-size:clamp(35px,9vw,65px);
+ font-weight:900;
+ text-align:center;
+ line-height:1.4;
+ color:#fff0f7;
+ text-shadow:0 0 10px #ff80b7,0 0 25px #ff4e9b,0 0 55px #ff167b;
+ animation:loveGlow 1.7s ease-in-out infinite alternate;
+ padding:20px;
+}
+
+@keyframes loveGlow{
+ from{
+  transform:scale(.92);
+  text-shadow:0 0 10px #ff80b7,0 0 25px #ff4e9b;
+ }
+ to{
+  transform:scale(1.08);
+  text-shadow:0 0 25px #fff,0 0 50px #ff1684,0 0 90px #ff1684;
+ }
+}
+
+.love-subtitle{
+ font-size:20px;
+ color:#ffd6e8;
+ animation:subtitle 2s infinite alternate;
+}
+
+@keyframes subtitle{
+ from{opacity:.5;transform:translateY(5px)}
+ to{opacity:1;transform:translateY(-5px)}
+}
+
+.love-floating{
+ position:absolute;
+ font-size:28px;
+ pointer-events:none;
+ animation:loveFloat 6s linear forwards;
+}
+
+@keyframes loveFloat{
+ from{transform:translateY(110vh) rotate(0deg);opacity:0}
+ 15%{opacity:1}
+ to{transform:translateY(-15vh) rotate(360deg);opacity:0}
 }
 </style>
 </head>
@@ -221,7 +282,7 @@ input{
 
 <div id="particles"></div>
 
-<!-- PASSWORD SCREEN -->
+<!-- PASSWORD -->
 <section class="screen active" id="login">
  <div class="card">
   <div class="hero">💗</div>
@@ -343,10 +404,10 @@ input{
  </div>
 </section>
 
-<!-- FINAL SURPRISE -->
+<!-- FINAL MESSAGE -->
 <section class="screen" id="final">
  <div class="card">
-  <div class="bigfinal">❤️</div>
+  <div class="hero">❤️</div>
   <h1>My Happiness!</h1>
   <p>তুমি সবগুলো Task শেষ করে ফেলেছো! 🥹</p>
   <div class="message" style="font-size:21px;font-weight:bold;color:#ffe0ed">
@@ -355,16 +416,27 @@ input{
   </div>
   <p>তুমি আমার সবচেয়ে সুন্দর অনুভূতি।</p>
   <div style="font-size:32px">🫂😘💗</div>
-  <button onclick="celebrate()">One More Hug! 🫂</button>
-  <p id="hug"></p>
+  <p>একটু অপেক্ষা করো, আমার ভালোবাসা... 💞</p>
  </div>
 </section>
 
+<!-- FULL SCREEN I LOVE YOU ANIMATION -->
+<div class="love-screen" id="loveScreen">
+ <div class="love-text">
+  I LOVE YOU<br>
+  HAPPINESS ❤️
+ </div>
+ <div class="love-subtitle">
+  Forever My Happiness 🥺💗
+ </div>
+</div>
+
 <script>
 
-/* PASSWORD CHANGE HERE */
+/* PASSWORD: REPLACE WITH SAHEB'S MOBILE NUMBER */
 const PASSWORD = "8768630077";
 
+/* EMOJI LOADING */
 function parseEmojis(){
  if(window.twemoji){
   twemoji.parse(document.body,{
@@ -379,15 +451,18 @@ window.addEventListener("load",parseEmojis);
 const observer=new MutationObserver(()=>{
  parseEmojis();
 });
+
 observer.observe(document.body,{
  childList:true,
  subtree:true
 });
 
+/* SCREEN NAVIGATION */
 function show(id){
  document.querySelectorAll(".screen").forEach(s=>{
   s.classList.remove("active");
  });
+
  document.getElementById(id).classList.add("active");
  parseEmojis();
 }
@@ -410,6 +485,7 @@ function go(n){
  if(n===4)makeMatch();
 }
 
+/* QUIZ ANSWERS */
 function answer(task,correct){
  const feedback=document.getElementById("feedback"+task);
 
@@ -429,7 +505,7 @@ function answer(task,correct){
  }
 }
 
-/* TASK 1: COLLECT HEARTS */
+/* TASK 1: COLLECT FIVE HEARTS */
 let collected=0;
 
 function makeHearts(){
@@ -444,6 +520,7 @@ function makeHearts(){
 
  for(let i=0;i<5;i++){
   const h=document.createElement("span");
+
   h.className="heart";
   h.textContent="💗";
 
@@ -476,7 +553,7 @@ function makeHearts(){
  parseEmojis();
 }
 
-/* TASK 4: NINE CARD MATCHING GAME */
+/* TASK 4: NINE CARD MATCHING */
 let first=null;
 let lock=false;
 let matches=0;
@@ -518,7 +595,6 @@ function makeMatch(){
 
    b.textContent=value;
 
-   /* Special heart card */
    if(value==="❤️"){
     b.classList.add("wild");
     b.classList.add("done");
@@ -563,6 +639,7 @@ function makeMatch(){
      old.textContent="❔";
      b.textContent="❔";
      lock=false;
+     parseEmojis();
     },750);
    }
 
@@ -576,7 +653,9 @@ function makeMatch(){
 }
 
 function checkMatchWin(){
+
  if(matches===4 && specialFound){
+
   document.getElementById("matchStatus").textContent=
    "সব জোড়া মিলে গেছে! তুমি জিতে গেছো! ❤️";
 
@@ -589,15 +668,53 @@ function checkMatchWin(){
 }
 
 /* FINAL SURPRISE */
+let loveAnimationStarted=false;
+
 function finish(){
+
  show("final");
 
  for(let i=0;i<35;i++){
   setTimeout(()=>spawn("💖"),i*100);
  }
+
+ setTimeout(()=>{
+  document.getElementById("loveScreen").classList.add("active");
+
+  if(!loveAnimationStarted){
+   loveAnimationStarted=true;
+   startLoveAnimation();
+  }
+
+  parseEmojis();
+ },5000);
 }
 
+/* FULL SCREEN HEART ANIMATION */
+function startLoveAnimation(){
+
+ setInterval(()=>{
+
+  const h=document.createElement("span");
+
+  h.className="love-floating";
+  h.textContent=["❤️","💗","💕","✨","🌸","💖"][
+   Math.floor(Math.random()*6)
+  ];
+
+  h.style.left=Math.random()*100+"%";
+  h.style.animationDuration=(4+Math.random()*4)+"s";
+
+  document.getElementById("loveScreen").appendChild(h);
+
+  setTimeout(()=>h.remove(),8500);
+
+ },250);
+}
+
+/* EXTRA HUG */
 function celebrate(){
+
  document.getElementById("hug").textContent=
   "অনেক অনেক ভালোবাসা আর একটা বড় Hug! 🫂❤️";
 
@@ -608,6 +725,7 @@ function celebrate(){
 
 /* FLOATING HEARTS */
 function spawn(symbol){
+
  const p=document.createElement("span");
 
  p.className="particle";
@@ -623,6 +741,7 @@ function spawn(symbol){
 }
 
 for(let i=0;i<28;i++){
+
  setTimeout(()=>{
   spawn(["💗","💕","✨","🌸"][i%4]);
  },i*350);
